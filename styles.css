@@ -1,0 +1,145 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(circle, #000, #111);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container */
+.heart-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  cursor: pointer;
+}
+
+/* HEART (STATIC + COLOR CHANGE) */
+.heart {
+  width: 180px;
+  height: 180px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  animation: colorChange 6s infinite;
+}
+
+.heart,
+.heart::before,
+.heart::after {
+  background: red;
+}
+
+.heart::before,
+.heart::after {
+  content: "";
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  position: absolute;
+}
+
+.heart::before {
+  top: -90px;
+  left: 0;
+}
+
+.heart::after {
+  left: 90px;
+  top: 0;
+}
+
+@keyframes colorChange {
+  0%   { background: #ff0000; }
+  25%  { background: #ff00cc; }
+  50%  { background: #6600ff; }
+  75%  { background: #00ccff; }
+  100% { background: #ff0000; }
+}
+
+.heart::before,
+.heart::after {
+  animation: colorChange 6s infinite;
+}
+
+/* TEXT (ONE LINE FIXED) */
+.text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  white-space: nowrap; /* important */
+  transform: translate(-150%, -50%) scale(0.5);
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  opacity: 0;
+  animation: slideZoom 2s ease forwards, glow 2s infinite alternate;
+}
+
+/* SLIDE + ZOOM */
+@keyframes slideZoom {
+  0% {
+    opacity: 0;
+    transform: translate(-150%, -50%) scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* GLOW */
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff;
+  }
+  to {
+    text-shadow: 0 0 25px #fff, 0 0 40px #ff00cc;
+  }
+}
+
+/* TEXT SWIPE EFFECT */
+.text-swipe {
+  position: absolute;
+  top: 50%;
+  left: -100%;
+  width: 100%;
+  height: 40px;
+  transform: translateY(-50%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.5),
+    transparent
+  );
+  animation: swipe 3s infinite;
+}
+
+@keyframes swipe {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* RIPPLE */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  transform: scale(0);
+  animation: rippleAnim 0.6s linear;
+}
+
+@keyframes rippleAnim {
+  to {
+    transform: scale(6);
+    opacity: 0;
+  }
+}
