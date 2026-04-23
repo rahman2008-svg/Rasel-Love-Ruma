@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 body {
@@ -21,7 +21,7 @@ body {
   cursor: pointer;
 }
 
-/* HEART (STATIC + COLOR CHANGE) */
+/* HEART */
 .heart {
   width: 180px;
   height: 180px;
@@ -32,6 +32,7 @@ body {
   animation: colorChange 6s infinite;
 }
 
+/* heart parts */
 .heart,
 .heart::before,
 .heart::after {
@@ -57,6 +58,7 @@ body {
   top: 0;
 }
 
+/* COLOR CHANGE */
 @keyframes colorChange {
   0%   { background: #ff0000; }
   25%  { background: #ff00cc; }
@@ -70,17 +72,18 @@ body {
   animation: colorChange 6s infinite;
 }
 
-/* TEXT (ONE LINE FIXED) */
+/* TEXT */
 .text {
   position: absolute;
   top: 50%;
   left: 50%;
-  white-space: nowrap; /* important */
+  white-space: nowrap;
   transform: translate(-150%, -50%) scale(0.5);
   color: white;
   font-size: 26px;
   font-weight: bold;
   opacity: 0;
+
   animation: slideZoom 2s ease forwards, glow 2s infinite alternate;
 }
 
@@ -106,7 +109,7 @@ body {
   }
 }
 
-/* TEXT SWIPE EFFECT */
+/* SWIPE */
 .text-swipe {
   position: absolute;
   top: 50%;
